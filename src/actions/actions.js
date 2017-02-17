@@ -8,14 +8,14 @@ export function getGenres(){
     return dispatch => {
         fetch(GENRES_URL)
             .then(response => response.json())
-            .then(json => dispatch(receivedGenres(json)))
+            .then(json => dispatch(receivedGenres(json.genres)))
     }
 }
 
 export function receivedGenres(res){
     return {
         type: 'RECEIVED_GENRES',
-        genres: json
+        genres: res
     }
 }
 

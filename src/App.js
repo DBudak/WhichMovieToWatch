@@ -9,7 +9,7 @@ import Main from './containers/Main'
 //Serve state as props to a Component
 function mapStateToProps(state){
   return {
-    /* ADD STATES */
+    genres : state.genres
   }
 }
 

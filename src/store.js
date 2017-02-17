@@ -15,7 +15,8 @@ import createLogger from 'redux-logger';
 
 //Redux DevTools browser plugin enchancer for store
 const enchancers = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f=>f
+    window.devToolsExtension ? window.devToolsExtension() : f=>f,
+    middleware
 );
 
 //Middleware for Async actions and logging
@@ -29,9 +30,10 @@ const middleware = applyMiddleware(
 
 //Initial State
 const initialState = {
-    genres,
-    genresPicked,
-    movies
+    genres:{
+        received : false,
+        data : []
+    }
 };
 
 //Store
