@@ -9,7 +9,7 @@ import App from './App';
 import Movies from './containers/Movies';
 
 //Routing
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute} from 'react-router';
 import { Provider } from 'react-redux';
 import store, {history} from './store';
 
@@ -17,7 +17,7 @@ import store, {history} from './store';
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={App}>
+      <Route path='/index.html' component={App}>
           <IndexRoute component={Movies}></IndexRoute>
       </Route>
     </Router>

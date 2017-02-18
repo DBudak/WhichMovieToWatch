@@ -3,7 +3,7 @@
     padding: 5px 10px;
 }
 
-ul.genres li {
+ul li {
     display: inline;
 }
 
@@ -48,9 +48,19 @@ button.button.fetch.ready:hover {
     background-size: cover;
     background-position: center center;
     padding: 20px 40px;
+    background-color: #9E9E9E;
+    box-shadow: inset 0 0 0 0 #31302B;
+
+}
+.movie-container.almost{
+    background-color: rgb(255, 152, 144);
+}
+.movie-container h2 {
+    text-align: center;
+    font-size: 28px;
 }
 .movie-container img.poster {
-    max-height: 500px;
+    max-width: 300px;
     display: block;
     float: left;
     box-shadow: -1px 5px 5px 0px black;
@@ -58,16 +68,44 @@ button.button.fetch.ready:hover {
 .title {
     font-size: 6em;
     color: white;
-    float: left;
     padding-left: 20px;
-    width: 80%;
+    max-width: 80%;
 }
 .description {
     color: white;
-    float: left;
     padding-left: 20px;
-    max-width: 40%;
+    max-width: 50%;
 }
-h3{
+.movie-item {
+    height: 169px;
+    width: 300px;
+    background-size: cover;
+    float: left;
+    margin: 20px 10px;
+    box-shadow: -2px 2px 1px black;
+    color: transparent;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    background: rgba(228, 228, 228, 0.74);    
+}
+.movie-item .movie-title{
+    margin-top:80px;
+    padding: 0 10px;
+}
+.movie-list-wrap{
+    margin-left: -40px;
+}
+.movie-item:hover{
     color:white;
+}
+.movie-item:hover> .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.70);
+}
+h2 {
+    color: white;
+    margin-top: 50px;
 }

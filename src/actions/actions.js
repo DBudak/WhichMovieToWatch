@@ -54,7 +54,8 @@ export function getMovies(genres){
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&vote_average.gte=5&with_genres=${genres}`)
             .then(response => response.json())
             .then(json => dispatch(receivedMovies(json)))
-    }
+            .then(json => dispatch(featuredMovieChosen(json.movies[0])))
+ }
 }
 
 export function receivedMovies(res){
@@ -64,3 +65,9 @@ export function receivedMovies(res){
     }
 }
 
+export function featuredMovieChosen(movie) {
+    return {
+        type: 'FEATURED_MOVIE_CHOSEN',
+        movie: movie
+    }
+}

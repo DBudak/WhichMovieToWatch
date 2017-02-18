@@ -13,11 +13,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 
-//Redux DevTools browser plugin enchancer for store
-const enchancers = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f=>f,
-    middleware
-);
+
 
 //Middleware for Async actions and logging
 const loggerMiddleware = createLogger();
@@ -26,7 +22,11 @@ const middleware = applyMiddleware(
     loggerMiddleware
 );
 
-
+//Redux DevTools browser plugin enchancer for store
+const enchancers = compose(
+    window.devToolsExtension ? window.devToolsExtension() : f=>f,
+    middleware
+);
 
 //Initial State
 const initialState = {
@@ -37,7 +37,8 @@ const initialState = {
     },
     movies: {
         received : false,
-        data: []
+        data: [],
+        featuredMovie : {}
     },
     config : {
         received : false,

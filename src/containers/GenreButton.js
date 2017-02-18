@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import '../styles/genres.css';
 
 class GenreButton extends Component{
-    constructor(props){
-        super(props);
-    }
 
     clickHandler(e){
         console.log(e.target.name, 'was clicked');
@@ -20,7 +17,7 @@ class GenreButton extends Component{
 
     render(){
         return (
-            <button className="genre button" name={this.props.id} onClick = { (e) => this.clickHandler(e) } >
+            <button className="genre button" name={this.props.id} onClick={ (e) => this.clickHandler(e) } >
                 {this.props.name}
             </button>
         )

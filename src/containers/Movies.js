@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import GenreButton from './GenreButton';
 import '../styles/genres.css';
-import MovieItem from './MovieItem';
+import 'bootstrap-grid-only/bootstrap.css';
+import MovieList from './MovieList';
 
 class Movies extends Component{
     componentWillMount(){
-        this.props.getGenres();
+        this.props.getGenres();        
     }
     getMovies(e){
         this.props.getMovies(this.props.genres.userChoice);
@@ -17,10 +18,14 @@ class Movies extends Component{
             return this.props.config.data.images.base_url +  this.props.config.data.images.poster_sizes[3] + url;
         }
     }
+    setFeatured(movie){
+        this.props.movies.featuredMovieChosen(movie);
+    }
     render() {
         //generating a list
         let genreList = '';
         if(this.props.genres.received){
+            console.log('genres received by Movies Component');
             genreList = this.props.genres.data.map((genre, i) => 
                 <li key={genre.id}>
                     <GenreButton name={genre.name} id={genre.id} 
@@ -28,70 +33,74 @@ class Movies extends Component{
                     genreRemoved={ this.props.genreRemoved }/>
                 </li>
             );
+            console.log('genreList generated', genreList);
         }
         //generating a button
         let fetchButton = '';
+        let movieViewText = 
+            <h2>                
+                Looking for a good movie to watch?<br/>
+                Pick some genres you like
+            </h2>;
+        let movieViewClass = "row movie-container";
         if(this.props.genres.userChoice.length > 0){
             fetchButton = 
             <button className="button fetch ready" 
             onClick={ e => this.getMovies(e) }>
                 Show Me What You Got
             </button>;
+            movieViewText = <h2>Almost There!<br/> Hit the red button above!</h2>
+            movieViewClass = movieViewClass + ' almost';
         }else{
             fetchButton = 
             <button className="button fetch"
             disabled 
             onClick={ e => this.getMovies(e) }>
                 Pick some genres
-            </button>
+            </button>;
+            movieViewClass = "row movie-container";
         }
-
-        let movieView = '';
-        let movieList = '';
+        let movieView = 
+            <div className={movieViewClass}> 
+                {movieViewText}
+            </div>;
         //genreating a movie view
         if(this.props.movies.received){
-            let featuredMovie = this.props.movies.data[0];
-            let backgdropUrl = this.imageLinkConstructor(featuredMovie.backdrop_path, 'backdrop');
-            let posterUrl = this.imageLinkConstructor(featuredMovie.poster_path, 'poster');
-            let title = featuredMovie.title;
-            let releaseDate = featuredMovie.release_date;
-            let description = featuredMovie.overview;
-            movieList = this.props.movies.data.map((movie, i) => {
-                <li key={i}>
-                    <MovieItem {...movie} />
-                </li>
-            });
-            console.log(this.props.movies.data.map((movie, i) => {
-                <li key={i}>
-                    <MovieItem {...movie} />
-                </li>
-            }));
+            let backgdropUrl = this.imageLinkConstructor(this.props.movies.featuredMovie.backdrop_path, 'backdrop');
+            let posterUrl = this.imageLinkConstructor(this.props.movies.featuredMovie.poster_path, 'poster');
+            let title = this.props.movies.featuredMovie.title;
+            //let releaseDate = this.props.movies.featuredMovie.release_date;
+            let description = this.props.movies.featuredMovie.overview;
             movieView = 
-                <div className="movie-container" style={{backgroundImage: `linear-gradient(to right,rgba(2, 2, 2, 0.80) 20%, rgba(2, 2, 2, 0.60) 60%,rgba(0, 0, 0, 0)),linear-gradient(to bottom,rgba(0, 0, 0, 0) 60%,rgba(2, 2, 2, 0.60)),url("${backgdropUrl}")` }}>
-                    <img className="poster" src={posterUrl} />
-                    <div className="title">
-                        {title}
+                <div className=" row movie-container" style={{backgroundImage: `linear-gradient(to right,rgba(2, 2, 2, 0.80) 20%, rgba(2, 2, 2, 0.60) 60%,rgba(0, 0, 0, 0)),linear-gradient(to bottom,rgba(0, 0, 0, 0) 60%,rgba(2, 2, 2, 0.60)),url("${backgdropUrl}")` }}>
+                    <div className="col-xs-12 col-md-2 ">
+                        <img alt="movie_poster" className="poster" src={posterUrl} />
                     </div>
-                    <div className="description">
-                        {description}
+                    <div className="col-xs-12 col-md-10">
+                        <div className="title">
+                            {title}
+                        </div>
+                        <div className="description">
+                            {description}
+                        </div>
                     </div>
-                    {
-                       this.props.movies.data.map((movie, i) => {
-                        'LOOOOOOOL'
-                        }) 
-                    }
+
+                    <div className="col-xs-12 col-md-12 movie-list-wrap">
+                        <MovieList movies={this.props.movies.data} 
+                        config={this.props.config}
+                        setFeatured={this.props.featuredMovieChosen}/>
+                    </div>
                 </div> 
         }
         return (
-            <div className="movies-container">
-                <div className="genres-bar">
+            <div className="row movies-container">
+                <div className=" row genres-bar">
                     <ul className="genres">
                         {genreList}
                     </ul>
                     {fetchButton}
                 </div>
-                {movieView}
-                {movieList}
+                {movieView}      
             </div>
         );
     }

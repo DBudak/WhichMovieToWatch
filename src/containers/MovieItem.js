@@ -5,13 +5,19 @@ class MovieItem extends Component{
 
 
     clickHandler(e){
-        console.log(e.target.name, 'was clicked');       
+        console.log(e.target, 'was clicked');
+        this.props.setFeatured(this.props.movie);       
     }
 
     render(){
         return (
-            <div>
-                {this.props.title}
+            <div className="movie-item" style={{backgroundImage: `url("${this.props.backdropUrl}")`}}
+            onClick={(e) => this.clickHandler(e)}>
+                <div className="overlay">
+                        <div className="movie-title">
+                            {this.props.movie.title}
+                        </div>
+                </div>           
             </div>
         )
     }
