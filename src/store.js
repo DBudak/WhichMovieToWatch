@@ -32,7 +32,16 @@ const middleware = applyMiddleware(
 const initialState = {
     genres:{
         received : false,
-        data : []
+        data : [],
+        userChoice : []
+    },
+    movies: {
+        received : false,
+        data: []
+    },
+    config : {
+        received : false,
+        data : {}
     }
 };
 

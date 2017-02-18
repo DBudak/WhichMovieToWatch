@@ -1,0 +1,73 @@
+.genres-bar {
+    background: #3a3a3a;
+    padding: 5px 10px;
+}
+
+ul.genres li {
+    display: inline;
+}
+
+button.genre.button {
+    margin: 10px;
+    padding: 10px;
+    background: #3a3a3a;
+    color: white;
+    border: 2px solid white;
+}
+
+button.genre.button.toggled{
+    background: #F44336;
+}
+button.genre.button:focus {
+    outline-color: rgba(255, 255, 255, 0);
+}
+button.button.fetch {
+    margin: 0 auto;
+    display: block;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    background: #9E9E9E;
+    color: white;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.85);
+}
+button.button.fetch.ready {
+    background: #F44336;
+}
+button.button.fetch.ready:hover {
+    background: #f53426;
+}
+.movie-container {
+    font-family: 'Roboto', sans-serif;
+    min-height: 80vh;
+    background-size: cover;
+    background-position: center center;
+    padding: 20px 40px;
+}
+.movie-container img.poster {
+    max-height: 500px;
+    display: block;
+    float: left;
+    box-shadow: -1px 5px 5px 0px black;
+}
+.title {
+    font-size: 6em;
+    color: white;
+    float: left;
+    padding-left: 20px;
+    width: 80%;
+}
+.description {
+    color: white;
+    float: left;
+    padding-left: 20px;
+    max-width: 40%;
+}
+h3{
+    color:white;
+}

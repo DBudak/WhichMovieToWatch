@@ -9,13 +9,12 @@ class Main extends Component {
     }
 
     componentDidMount(){
-        
+        this.props.getAPIConfig();
     }
 
     render() {
         return (
             <div className="main-wrapper">
-                Main Component
                 <div className="presentation">
                     {React.cloneElement(this.props.children, this.props)}
                 </div>                

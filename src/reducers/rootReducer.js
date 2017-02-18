@@ -1,10 +1,13 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import genres from './genres';
+import movies from './movies';
+import config from './config';
 
 const rootReducer = combineReducers({
-    /*ADD REDUCERS FOR STATES */
     genres,
+    movies,
+    config,
     routing: routerReducer
 });
 
