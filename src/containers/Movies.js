@@ -42,7 +42,7 @@ class Movies extends Component{
                 Looking for a good movie to watch?<br/>
                 Pick some genres you like
             </h2>;
-        let movieViewClass = "row movie-container";
+        let movieViewClass = "movie-container container-fluid";
         if(this.props.genres.userChoice.length > 0){
             fetchButton = 
             <button className="button fetch ready" 
@@ -58,7 +58,7 @@ class Movies extends Component{
             onClick={ e => this.getMovies(e) }>
                 Pick some genres
             </button>;
-            movieViewClass = "row movie-container";
+            movieViewClass = "movie-container container-fluid";
         }
         let movieView = 
             <div className={movieViewClass}> 
@@ -72,20 +72,21 @@ class Movies extends Component{
             //let releaseDate = this.props.movies.featuredMovie.release_date;
             let description = this.props.movies.featuredMovie.overview;
             movieView = 
-                <div className=" row movie-container" style={{backgroundImage: `linear-gradient(to right,rgba(2, 2, 2, 0.80) 20%, rgba(2, 2, 2, 0.60) 60%,rgba(0, 0, 0, 0)),linear-gradient(to bottom,rgba(0, 0, 0, 0) 60%,rgba(2, 2, 2, 0.60)),url("${backgdropUrl}")` }}>
-                    <div className="col-xs-12 col-md-2 ">
-                        <img alt="movie_poster" className="poster" src={posterUrl} />
-                    </div>
-                    <div className="col-xs-12 col-md-10">
-                        <div className="title">
-                            {title}
+                <div className="movie-container container-fluid" style={{backgroundImage: `linear-gradient(to right,rgba(2, 2, 2, 0.80) 20%, rgba(2, 2, 2, 0.60) 60%,rgba(0, 0, 0, 0)),linear-gradient(to bottom,rgba(0, 0, 0, 0) 60%,rgba(2, 2, 2, 0.60)),url("${backgdropUrl}")` }}>
+                    <div className="row">
+                        <div className="col-xs-12 col-md-3 col-lg-2">
+                            <img alt="movie_poster" className="poster" src={posterUrl} />
                         </div>
-                        <div className="description">
-                            {description}
+                        <div className="col-xs-12 col-md-9 col-lg-10">
+                            <div className="title">
+                                {title}
+                            </div>
+                            <div className="description">
+                                {description}
+                            </div>
                         </div>
                     </div>
-
-                    <div className="col-xs-12 col-md-12 movie-list-wrap">
+                    <div className="row">
                         <MovieList movies={this.props.movies.data} 
                         config={this.props.config}
                         setFeatured={this.props.featuredMovieChosen}/>
@@ -93,8 +94,8 @@ class Movies extends Component{
                 </div> 
         }
         return (
-            <div className="row movies-container">
-                <div className=" row genres-bar">
+            <div>
+                <div className="genres-bar container-fluid">
                     <ul className="genres">
                         {genreList}
                     </ul>

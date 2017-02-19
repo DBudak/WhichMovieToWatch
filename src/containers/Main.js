@@ -9,10 +9,8 @@ class Main extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    {React.cloneElement(this.props.children, this.props)}
-                </div>                
+            <div>
+                    {React.cloneElement(this.props.children, this.props)}             
             </div>
         );
     }
