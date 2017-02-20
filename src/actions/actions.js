@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
+import API_KEY from '../keys';
 
 
-const API_KEY = "70ce42f6e68ebc97d7260f72e972fd9b";
 const GENRES_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
 const CONFIG_URL = `https://api.themoviedb.org/3/configuration?api_key=${API_KEY}`;
 

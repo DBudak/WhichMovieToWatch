@@ -26,21 +26,20 @@ class MovieList extends Component{
       infinite: false,
       speed: 500,
       arrows : true,
-      adaptiveHeight: true,
-      slidesToScroll: 1,
+      swipe : true,
       responsive : [
-        { breakpoint: 469,
-            settings: {slidesToShow: 1} }, 
-        { breakpoint: 640, 
-            settings: {slidesToShow: 2} },
+        { breakpoint: 650,
+            settings: {slidesToShow: 1, slidesToScroll: 1} }, 
         { breakpoint: 960, 
-            settings: {slidesToShow: 3} },             
+            settings: {slidesToShow: 2, slidesToScroll: 2} },
         { breakpoint: 1280, 
-            settings: {slidesToShow: 4} }, 
+            settings: {slidesToShow: 3, slidesToScroll: 3} },             
         { breakpoint: 1600, 
-            settings: {slidesToShow: 5} },
+            settings: {slidesToShow: 4, slidesToScroll: 4} }, 
+        { breakpoint: 1920, 
+            settings: {slidesToShow: 5, slidesToScroll: 5} },
         { breakpoint: 10000, 
-            settings: {slidesToShow: 6} }
+            settings: {slidesToShow: 6, slidesToScroll: 6} }
          ]
     };
 

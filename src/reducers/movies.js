@@ -1,9 +1,17 @@
 export default function movies(state=[],action){
     switch(action.type){
         case 'RECEIVED_MOVIES':
-            return Object.assign({},state,{data: action.movies});
+            if( action.movies.length > 0 ){
+                return Object.assign({},state,{data: action.movies});
+            }else{
+                return Object.assign({},state,{data : [],received: false, featuredMovie : [], noMoviesFound: true});
+            }       
         case 'FEATURED_MOVIE_CHOSEN':
-            return Object.assign({},state,{received: true, featuredMovie : action.movie});
+            if(state.data.length > 0){
+                return Object.assign({},state,{received: true, featuredMovie : action.movie });
+            }else{
+                return state;
+            }
         default:
             return state;
     }

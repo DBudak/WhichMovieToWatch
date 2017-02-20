@@ -37,6 +37,7 @@ const initialState = {
     },
     movies: {
         received : false,
+        noMoviesFound : false,
         data: [],
         featuredMovie : {}
     },

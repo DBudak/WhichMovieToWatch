@@ -83,7 +83,7 @@ button.button.fetch.ready:hover {
     width: 300px;
     background-size: cover;
     float: left;
-    margin: 20px 10px;
+    margin: 20px 2%;
     box-shadow: -2px 2px 1px black;
     color: transparent;
     text-align: center;
@@ -110,4 +110,12 @@ button.button.fetch.ready:hover {
 h2 {
     color: white;
     margin-top: 50px;
+}
+.poster-wrap{
+    max-width:300px;
+}
+@media screen and (max-width: 991px) {
+    .title{
+        font-size: 3em;
+    }
 }

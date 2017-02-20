@@ -60,6 +60,10 @@ class Movies extends Component{
             </button>;
             movieViewClass = "movie-container container-fluid";
         }
+        if(this.props.movies.noMoviesFound){
+           movieViewText = <h2>Oops!<br/> Looks like you went too far! <br/> 
+           Try to choose less genres and I will find something for you</h2> 
+        }
         let movieView = 
             <div className={movieViewClass}> 
                 {movieViewText}
@@ -74,10 +78,10 @@ class Movies extends Component{
             movieView = 
                 <div className="movie-container container-fluid" style={{backgroundImage: `linear-gradient(to right,rgba(2, 2, 2, 0.80) 20%, rgba(2, 2, 2, 0.60) 60%,rgba(0, 0, 0, 0)),linear-gradient(to bottom,rgba(0, 0, 0, 0) 60%,rgba(2, 2, 2, 0.60)),url("${backgdropUrl}")` }}>
                     <div className="row">
-                        <div className="col-xs-12 col-md-3 col-lg-2">
+                        <div className="col-xs-12 col-md-4 col-lg-3 col-xl-2 poster-wrap">
                             <img alt="movie_poster" className="poster" src={posterUrl} />
                         </div>
-                        <div className="col-xs-12 col-md-9 col-lg-10">
+                        <div className="col-xs-12 col-md-8 col-lg-9 col-xl-10">
                             <div className="title">
                                 {title}
                             </div>
